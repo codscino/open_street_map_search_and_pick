@@ -91,8 +91,8 @@ class _OpenStreetMapSearchAndPickState
   }
 
   void setNameCurrentPos() async {
-    double latitude = _mapController.center.latitude;
-    double longitude = _mapController.center.longitude;
+    double latitude = _mapController.camera.center.latitude;
+    double longitude = _mapController.camera.center.longitude;
     if (kDebugMode) {
       print(latitude);
     }
@@ -177,7 +177,7 @@ class _OpenStreetMapSearchAndPickState
     return FutureBuilder<Position?>(
       future: latlongFuture,
       builder: (context, snapshot) {
-        LatLng? mapCentre;
+        late LatLng mapCentre;
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
             child: CircularProgressIndicator(),
@@ -198,7 +198,7 @@ class _OpenStreetMapSearchAndPickState
               Positioned.fill(
                 child: FlutterMap(
                   options: MapOptions(
-                      center: mapCentre, zoom: 15.0, maxZoom: 18, minZoom: 6),
+                      initialCenter: mapCentre, initialZoom: 15.0, maxZoom: 18, minZoom: 6),
                   mapController: _mapController,
                   children: [
                     TileLayer(
@@ -242,7 +242,7 @@ class _OpenStreetMapSearchAndPickState
                   backgroundColor: widget.buttonColor,
                   onPressed: () {
                     _mapController.move(
-                        _mapController.center, _mapController.zoom + 1);
+                        _mapController.camera.center, _mapController.camera.zoom + 1);
                   },
                   child: Icon(
                     widget.zoomInIcon,
@@ -258,7 +258,7 @@ class _OpenStreetMapSearchAndPickState
                   backgroundColor: widget.buttonColor,
                   onPressed: () {
                     _mapController.move(
-                        _mapController.center, _mapController.zoom - 1);
+                        _mapController.camera.center, _mapController.camera.zoom - 1);
                   },
                   child: Icon(
                     widget.zoomOutIcon,
@@ -276,10 +276,10 @@ class _OpenStreetMapSearchAndPickState
                     if (mapCentre != null) {
                       _mapController.move(
                           LatLng(mapCentre.latitude, mapCentre.longitude),
-                          _mapController.zoom);
+                          _mapController.camera.zoom);
                     } else {
                       _mapController.move(
-                          LatLng(50.5, 30.51), _mapController.zoom);
+                          LatLng(50.5, 30.51), _mapController.camera.zoom);
                     }
                     setNameCurrentPos();
                   },
@@ -413,10 +413,10 @@ class _OpenStreetMapSearchAndPickState
 
   Future<PickedData> pickData() async {
     LatLong center = LatLong(
-        _mapController.center.latitude, _mapController.center.longitude);
+        _mapController.camera.center.latitude, _mapController.camera.center.longitude);
     var client = http.Client();
     String url =
-        '${widget.baseUri}/reverse?format=json&lat=${_mapController.center.latitude}&lon=${_mapController.center.longitude}&zoom=18&addressdetails=1';
+        '${widget.baseUri}/reverse?format=json&lat=${_mapController.camera.center.latitude}&lon=${_mapController.camera.center.longitude}&zoom=18&addressdetails=1';
 
     var response = await client.get(Uri.parse(url));
     // var response = await client.post(Uri.parse(url));

@@ -1,3 +1,11 @@
+open_street_map_search_and_pick
+2.17
+file:///Users/claudioferrara/Documents/GitHub/open_street_map_search_and_pick/
+file:///Users/claudioferrara/Documents/GitHub/open_street_map_search_and_pick/lib/
+example
+2.17
+file:///Users/claudioferrara/Documents/GitHub/open_street_map_search_and_pick/example/
+file:///Users/claudioferrara/Documents/GitHub/open_street_map_search_and_pick/example/lib/
 async
 2.18
 file:///home/abduzzamidebian/.pub-cache/hosted/pub.dev/async-2.11.0/
@@ -194,14 +202,6 @@ wkt_parser
 2.12
 file:///home/abduzzamidebian/.pub-cache/hosted/pub.dev/wkt_parser-2.0.0/
 file:///home/abduzzamidebian/.pub-cache/hosted/pub.dev/wkt_parser-2.0.0/lib/
-open_street_map_search_and_pick
-2.17
-file:///home/abduzzamidebian/Documents/GitKraken/open_street_map_search_and_pick/
-file:///home/abduzzamidebian/Documents/GitKraken/open_street_map_search_and_pick/lib/
-example
-2.17
-file:///home/abduzzamidebian/Documents/GitKraken/open_street_map_search_and_pick/example/
-file:///home/abduzzamidebian/Documents/GitKraken/open_street_map_search_and_pick/example/lib/
 sky_engine
 3.2
 file:///home/abduzzamidebian/snap/flutter/common/flutter/bin/cache/pkg/sky_engine/
